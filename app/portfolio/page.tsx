@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import SiteFrame from "@/components/SiteFrame";
+import PageHero from "@/components/PageHero";
+import Cta from "@/components/Cta";
+import PortfolioGrid from "@/components/PortfolioGrid";
+import { PORTFOLIO } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Ten multifamily communities across six states — each acquired, improved, and managed by Granite Peak Equity with hands-on attention.",
+};
+
+const STATS: [string, string][] = [
+  ["10", "Properties"],
+  ["6", "States"],
+  ["650+", "Units"],
+  ["18", "Total Deals Closed"],
+];
+
+export default function PortfolioPage() {
+  return (
+    <SiteFrame>
+      <PageHero
+        tag="Our Properties"
+        title="A Decade-Spanning Portfolio."
+        subtitle="Ten communities across six states — each acquired, improved, and managed with hands-on attention."
+      />
+
+      {/* Stats strip */}
+      <section className="bg-navy-mid px-6 md:px-[60px] py-8 flex flex-wrap gap-x-12 gap-y-4 md:gap-[60px] items-center">
+        {STATS.map(([n, l]) => (
+          <div key={l} className="flex items-baseline gap-2.5">
+            <span className="font-serif font-light text-blue text-[36px]">{n}</span>
+            <span className="text-white/40 text-[13px]">{l}</span>
+          </div>
+        ))}
+      </section>
+
+      {/* Grid */}
+      <section className="px-6 md:px-[60px] py-16 md:py-[72px] bg-white">
+        <PortfolioGrid properties={PORTFOLIO} />
+      </section>
+
+      <Cta
+        heading="Interested in our next acquisition?"
+        sub="We're always looking for our next deal. Brokers and sellers are welcome."
+        btnLabel="View Acquisition Criteria"
+        btnHref="/acquisition"
+      />
+    </SiteFrame>
+  );
+}

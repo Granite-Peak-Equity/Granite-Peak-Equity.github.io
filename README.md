@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Granite Peak Equity — Website
 
-## Getting Started
+Marketing site for Granite Peak Equity, a Bozeman, Montana family-owned firm
+investing in and managing multifamily real estate. Built with **Next.js 16
+(App Router) + Tailwind CSS v4**, exported as a fully static site for
+**GitHub Pages**.
 
-First, run the development server:
+## Pages
+
+| Route          | Page                                              |
+| -------------- | ------------------------------------------------- |
+| `/`            | Home — hero, metrics, about, featured portfolio   |
+| `/investors`   | Investor info — process, track record, FAQ        |
+| `/portfolio`   | All 10 properties                                 |
+| `/team`        | Leadership + operations bios                       |
+| `/acquisition` | Acquisition criteria, target-market map, deal form |
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build (static export)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # outputs static HTML/CSS/JS to ./out
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`out/` is what gets published to GitHub Pages.
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+- **Properties & team bios:** `lib/data.ts`
+- **Site name, emails, nav links, copyright:** `lib/site.ts`
+- **Page copy:** the relevant file in `app/<page>/page.tsx`
+- **Images:** `public/uploads/` (logo, hero photo, Chad's headshot)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploying to GitHub Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this folder to a GitHub repository.
+2. In the repo: **Settings → Pages → Build and deployment → Source =
+   GitHub Actions**.
+3. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and
+   deploys automatically.
 
-## Deploy on Vercel
+### Important: base path
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+GitHub Pages serves a project repo at `https://USER.github.io/REPO/`, which
+requires a base path so CSS/JS/images resolve correctly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Custom domain** (e.g. `www.granitepeakequity.com`) or a **user page**
+  (`USER.github.io`): nothing to do — leave the base path unset.
+- **Project page** (`USER.github.io/REPO`): uncomment the
+  `NEXT_PUBLIC_BASE_PATH` line in `.github/workflows/deploy.yml`.
+
+### Custom domain
+
+To use `granitepeakequity.com`, create `public/CNAME` containing just the
+domain, e.g.:
+
+```
+www.granitepeakequity.com
+```
+
+then configure the domain under **Settings → Pages**.
+
+## Still to do before launch
+
+- **Wire up the forms.** The deal-submission and contact actions currently show
+  a success state but don't send anywhere (a static site has no server). See the
+  `INTEGRATION POINT` comment in `components/DealForm.tsx`. Easiest option:
+  point the form at a [Formspree](https://formspree.io) endpoint.
+- **Investor Login** button links to `#` — point it at the real investor portal
+  (in `components/Nav.tsx`).
+- **Photos:** property cards and the Brad/Alex/Sally headshots show
+  "Photo Coming Soon" placeholders. Drop real images in `public/uploads/` and
+  reference them in `lib/data.ts`.
+- Replace the favicon (`app/favicon.ico`) with the Granite Peak mark.
