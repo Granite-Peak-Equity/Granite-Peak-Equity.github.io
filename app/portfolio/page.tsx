@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const STATS: [string, string][] = [
-  [String(PROPERTY_COUNT), "Communities"],
+  [String(PROPERTY_COUNT), "Properties"],
   [String(STATE_COUNT), "States"],
   [String(SITE.foundedYear), "Investing Since"],
 ];

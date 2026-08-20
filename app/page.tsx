@@ -9,7 +9,7 @@ import { PORTFOLIO, PROPERTY_COUNT, STATE_COUNT } from "@/lib/data";
 
 const METRICS: [string, string][] = [
   [String(SITE.foundedYear), "Investing Since"],
-  [String(PROPERTY_COUNT), "Communities Owned"],
+  [String(PROPERTY_COUNT), "Properties Owned"],
   [String(STATE_COUNT), "States"],
 ];
 
