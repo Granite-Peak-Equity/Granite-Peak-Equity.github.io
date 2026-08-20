@@ -70,11 +70,11 @@ export default function ContactForm() {
     return (
       <div className="border-l-[3px] border-blue bg-cream-light px-6 py-8">
         <div className="font-serif text-2xl text-navy-dark mb-2">
-          Send us an email.
+          One last step.
         </div>
         <p className="text-sm text-navy-dark/60 leading-[1.7] font-light mb-4">
-          This form isn&apos;t connected to an inbox yet. Click below to open
-          your email app with your message ready to send, or write to{" "}
+          Click below to open your email app with your message ready to send.
+          If nothing opens, write to us directly at{" "}
           <a
             href={`mailto:${SITE.infoEmail}`}
             className="text-blue hover:text-blue-dark break-all"
