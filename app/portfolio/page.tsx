@@ -23,7 +23,7 @@ export default function PortfolioPage() {
     <SiteFrame>
       <PageHero
         title="Holdings"
-        subtitle="Ten apartment communities in five states. We bought every one of them, put the work in, and still manage them ourselves."
+        subtitle="Ten apartment communities in five states."
       />
 
       {/* Stats strip */}
