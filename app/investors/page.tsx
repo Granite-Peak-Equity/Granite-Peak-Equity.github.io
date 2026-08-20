@@ -31,7 +31,7 @@ const ACCREDITED = [
 
 const FAQS = [
   { q: "Who can invest with Granite Peak?", a: "We work with accredited investors, as the term is defined in Rule 501 of Regulation D — see the full definition above." },
-  { q: "What is the minimum investment?", a: "The minimum investment is $20,000, with no maximum. We're happy to discuss the specifics of any current opportunity." },
+  { q: "What is the minimum investment?", a: "The minimum investment is $20,000. We're happy to discuss the specifics of any current opportunity." },
   { q: "How are distributions handled?", a: "Distributions are paid out based on the deal structure — typically quarterly or upon exit. Each offering document outlines the specific schedule." },
   { q: "How often will I hear from you?", a: "We provide quarterly reporting on asset performance and are always reachable directly." },
   { q: "What types of properties do you invest in?", a: "We focus exclusively on multifamily residential — apartment communities in secondary and tertiary markets across the Mountain West and Great Plains." },

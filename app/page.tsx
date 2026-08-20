@@ -17,7 +17,7 @@ const METRICS: [string, string][] = [
  *  copy and gallery photos stay in sync with /portfolio. */
 const FEATURED_NAMES = [
   "CityView Central Lofts",
-  "Hons Apartments",
+  "Bekins Luxury Lofts",
   "Juniper Canyon",
 ];
 
