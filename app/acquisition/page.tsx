@@ -3,8 +3,17 @@ import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
 import UsMap from "@/components/UsMap";
-import DealForm from "@/components/DealForm";
-import { SITE } from "@/lib/site";
+import { SITE, telHref } from "@/lib/site";
+
+/** What a broker or seller should send with a deal. */
+const SUBMIT_ITEMS = [
+  "Property address, or the city and state if the listing is confidential",
+  "Unit count, unit mix, and year built",
+  "Asking price, or a guide on pricing expectations",
+  "Current occupancy and any recent rent roll or T-12",
+  "Timeline, and whether the seller is under any deadline",
+  "Anything unusual — deferred maintenance, HUD or LIHTC contracts, partial vacancy",
+];
 
 export const metadata: Metadata = {
   title: "Acquisition Criteria",
@@ -181,13 +190,51 @@ export default function AcquisitionPage() {
               </div>
               <a
                 href={`mailto:${SITE.acquisitionsEmail}`}
-                className="text-base font-semibold text-navy-dark hover:text-blue transition-colors"
+                className="text-base font-semibold text-navy-dark hover:text-blue transition-colors break-all"
               >
                 {SITE.acquisitionsEmail}
               </a>
+              <div className="text-sm text-navy-dark/55 leading-[1.7] font-light mt-2">
+                Or call{" "}
+                <a
+                  href={telHref(SITE.tollFree)}
+                  className="text-navy-dark hover:text-blue transition-colors"
+                >
+                  {SITE.tollFree}
+                </a>
+                .
+              </div>
             </div>
           </div>
-          <DealForm />
+
+          <div>
+            <Eyebrow className="mb-5">What to Include</Eyebrow>
+            <p className="text-[15px] leading-[1.8] text-navy-dark/60 font-light mb-7">
+              A short email is plenty to start. The more of this you can share
+              up front, the faster we can give you a real answer.
+            </p>
+            <ul>
+              {SUBMIT_ITEMS.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-4 py-[15px] border-b border-navy-dark/[0.09]"
+                >
+                  <span className="w-[3px] shrink-0 bg-blue rounded-sm" />
+                  <span className="text-[15px] text-navy-dark/60 leading-[1.7] font-light">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`mailto:${SITE.acquisitionsEmail}?subject=${encodeURIComponent(
+                "Deal submission"
+              )}`}
+              className="inline-block mt-8 bg-blue hover:bg-blue-dark text-white px-8 py-[14px] text-[13px] font-semibold tracking-[0.05em] transition-colors"
+            >
+              Email Your Deal
+            </a>
+          </div>
         </div>
       </section>
     </SiteFrame>
