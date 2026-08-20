@@ -8,12 +8,12 @@ import { PORTFOLIO } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Holdings",
   description:
-    "Ten multifamily communities across six states — each acquired, improved, and managed by Granite Peak Equity with hands-on attention.",
+    "The ten apartment communities Granite Peak Equity owns and manages across Montana, Iowa, South Dakota, Texas, and Arizona.",
 };
 
 const STATS: [string, string][] = [
   ["10", "Properties"],
-  ["6", "States"],
+  ["5", "States"],
   ["650+", "Units"],
   ["18", "Total Deals Closed"],
 ];
@@ -21,7 +21,10 @@ const STATS: [string, string][] = [
 export default function PortfolioPage() {
   return (
     <SiteFrame>
-      <PageHero title="Holdings" />
+      <PageHero
+        title="Holdings"
+        subtitle="Ten apartment communities in five states. We bought every one of them, put the work in, and still manage them ourselves."
+      />
 
       {/* Stats strip */}
       <section className="bg-navy-mid px-6 md:px-[60px] py-8 flex flex-wrap gap-x-12 gap-y-4 md:gap-[60px] items-center">
