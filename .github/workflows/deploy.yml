@@ -19,13 +19,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # This repo (JohnLaird04/granitepeakequity.github.io) is served as a
-      # PROJECT page at https://johnlaird04.github.io/granitepeakequity.github.io/,
-      # so assets must resolve under the repo subpath:
-      NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+      # This repo is a USER/ORG site (<account>.github.io), served from the
+      # root at https://<account>.github.io/ — so no basePath is needed, and
+      # a custom domain (www.granitepeakequity.com) will work as-is.
       #
-      # If you later attach a custom domain (e.g. www.granitepeakequity.com),
-      # comment the line above out so the site is served from the root.
+      # If the site is ever moved to a PROJECT repo, uncomment:
+      #   NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
       - uses: actions/checkout@v4
