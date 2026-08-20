@@ -48,5 +48,6 @@ export const NAV_ITEMS = [
   { label: "Portfolio", href: "/portfolio" },
   { label: "Team", href: "/team" },
   { label: "Acquisition Criteria", href: "/acquisition" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ] as const;

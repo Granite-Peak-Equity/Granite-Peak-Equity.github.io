@@ -288,3 +288,72 @@ export const TEAM: TeamMember[] = [
     size: "small",
   },
 ];
+
+export type Testimonial = {
+  /** One entry per paragraph. */
+  quote: string[];
+  who: string;
+  where: string;
+};
+
+/** Investor testimonials, carried over verbatim from granitepeakequity.com. */
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote: [
+      "We have invested with Granite Peak Equity since early 2015. From the very beginning, Brad and Chad have been extremely helpful to us as they walked through each new investment opportunity, along with potential upsides and risks. They have been very knowledgeable, pleasant, and patient, with never any pressure. We explored investing directly and also through a self-directed IRA. They went the extra mile in helping us to locate a third-party equity firm as required by the IRS for self-directed IRAs, and that has gone quite smoothly. Granite Peak has been highly selective in their review and assessment of various properties, being sensitive to value and risk for investors, which we especially appreciate as we near full retirement. From the onset, Brad and Chad and the team at Granite have been completely transparent and always on time with statements, distributions, and great quarterly synopsis of each asset performance. On top of all that, we have had very positive net gains on our portfolio with Granite Peak Equity. We look forward to our next investment opportunity with Granite Peak. Keep up the good work!",
+    ],
+    who: "D.H.",
+    where: "Bozeman, MT",
+  },
+  {
+    quote: [
+      "My wife and I started our investment with Granite Peak Equity in early 2014. We had just sold our house and were looking for a smart way to park our profit. We wanted to use real estate to inflation proof our investment portfolio. We loved the idea of passive income from rental properties, but didn’t like the time or headache involved with being a landlord. Beyond our monetary investment, I have personally known Chad and Brad for a few years. They are outstanding men in Bozeman, Montana’s community, and have garnered my trust to care for and grow my investment portfolio.",
+    ],
+    who: "M.P.",
+    where: "San Francisco, CA",
+  },
+  {
+    quote: [
+      "I have known Brad for 15+ years, having first met as classmates in business school. Aware of his prior experience and successes in both industrial and high profile real estate properties, it was second nature for my wife and me to become an investor in two properties led by Granite Peak Equity.",
+      "We all know diversification and solid returns are key principles of sound investing, and the team at Granite Peak Equity have provided us with passive investment opportunities in multi-family real estate investments generating quarterly cash distributions. The sale of our first invested property not only exceeded the sale price targeted at the outset, but also occurred several years ahead of projections.",
+      "Granite Peak Equity has the expertise and track record in providing financially sound opportunities to passively invest in multi-unit real estate properties. Our returns to-date, combined with the consistent transparency and quarterly updates from Granite Peak Equity to its investors, are why we continue to invest with Brad & team (and steer clear from real estate crowdfunding platforms available in the market).",
+    ],
+    who: "E.P.",
+    where: "Lisbon, Portugal",
+  },
+  {
+    quote: [
+      "We became an investor in 2015. All quarterly reports are informative and timely. Distributions are included with the quarterly updates. The returns on the first project were right in line with the projected plan. The first project was very successful financially and the return better than hope for. The second project has run to plan as well and we are still invested in that project. Granite Peak Equity has been a great company to partner with and we are very impressed with the management and our return.",
+    ],
+    who: "D.L.",
+    where: "Bozeman, MT",
+  },
+  {
+    quote: [
+      "I can’t tell you how pleased I am with my relationship with Chad and his team. I love real estate as a part of my investment strategy and every project I’ve been involved with through Southwest Montana Properties and now, Granite Peak Equity has been over and above expectations. They are very responsive to questions and supply documentation when needed. Everything thing I’ve invested in with them has performed better than expected. Looking forward to more.",
+    ],
+    who: "L.W.L",
+    where: "Lynden, WA",
+  },
+  {
+    quote: [
+      "My wife and I have been investing with Chad in multifamily real estate projects for 14 years, and now through Granite Peak Equity. We have had investments in 9 separate properties so far, and we presently are invested in 6 properties. Each of our investments has been very successful. We are experienced investors in several disciplines, and the returns from these multifamily property investments are exceptional. The expertise and professionalism of Chad and his team has given us great comfort in these investments. We can’t wait for the next property to be presented to us.",
+    ],
+    who: "P.L.",
+    where: "Butte, MT",
+  },
+  {
+    quote: [
+      "I have been very happy with my choice to invest with Granite Peak Equity. Each property I have invested in has been great quality real estate, with a good business plan and intriguing rates of return. The results have been at or greater than initial projections, showing success in their ability to manage the properties according to their proposed business plan. And that is what investors really like – no surprises!",
+    ],
+    who: "R.S.",
+    where: "Bozeman, MT",
+  },
+  {
+    quote: [
+      "Trusting your capital is in good hands is key and we always had plenty of confidence in the performance of Chad and his team in managing real estate investments. In such a business, it’s all about people and my wife and I never hesitated in investing with Granite Peak Equity and will gladly invest again in the future.",
+    ],
+    who: "P.C.",
+    where: "Lafayette, CA",
+  },
+];

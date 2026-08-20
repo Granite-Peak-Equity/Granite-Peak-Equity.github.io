@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
@@ -81,13 +82,20 @@ export default function InvestorsPage() {
             &ldquo;
           </div>
           <p className="font-serif text-white text-[22px] md:text-[28px] leading-[1.55] mb-7">
-            Chad has been very straightforward and up front about his investment
-            objectives, how my money would be used, and how my returns would be
-            earned. He has met or exceeded my expectations every year.
+            The results have been at or greater than initial projections,
+            showing success in their ability to manage the properties according
+            to their proposed business plan. And that is what investors really
+            like &ndash; no surprises!
           </p>
-          <div className="text-blue-light text-sm font-semibold">
-            Tom S. · Investor since 2009
+          <div className="text-blue-light text-sm font-semibold mb-6">
+            R.S. · Bozeman, MT
           </div>
+          <Link
+            href="/testimonials"
+            className="text-white/50 hover:text-white text-[13px] tracking-[0.04em] transition-colors"
+          >
+            Read more investor testimonials →
+          </Link>
         </div>
       </section>
 
