@@ -31,7 +31,7 @@ export default function PortfolioCard({
       style={{ boxShadow: hover ? "0 8px 32px rgba(15,24,36,.12)" : "none" }}
     >
       <div
-        className="h-[160px] flex items-center justify-center relative overflow-hidden"
+        className="aspect-[3/2] flex items-center justify-center relative overflow-hidden"
         style={{ background: p.bg }}
       >
         {cover ? (

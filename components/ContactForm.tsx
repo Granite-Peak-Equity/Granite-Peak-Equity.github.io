@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SITE } from "@/lib/site";
+import { SITE, FORM_ENDPOINT, mailtoLink } from "@/lib/site";
 
 const inputClass =
   "w-full px-3.5 py-[11px] text-sm border border-navy-dark/[0.14] outline-none text-navy-dark bg-white focus:border-blue transition-colors";
@@ -9,20 +9,45 @@ const labelClass =
   "block text-[11px] font-semibold text-navy-dark/45 tracking-[0.08em] uppercase mb-1.5";
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "no-endpoint"
+  >("idle");
+  const [fallback, setFallback] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // ── INTEGRATION POINT ───────────────────────────────────────────────
-    // Static export (GitHub Pages) has no server to receive this. To go live,
-    // either point the <form> at a Formspree endpoint, or POST
-    // `new FormData(e.currentTarget)` to a serverless function that emails
-    // SITE.infoEmail. For now we show a success state so the UX is complete.
-    // ────────────────────────────────────────────────────────────────────
-    setSubmitted(true);
+    const data = new FormData(e.currentTarget);
+    const get = (k: string) => String(data.get(k) ?? "");
+
+    // No endpoint configured yet — say so and hand the visitor a prefilled
+    // email rather than silently dropping their message.
+    if (!FORM_ENDPOINT) {
+      setFallback(
+        mailtoLink(SITE.infoEmail, get("subject") || "Website inquiry", [
+          ["Name", get("name")],
+          ["Email", get("email")],
+          ["Phone", get("phone")],
+          ["Message", get("message")],
+        ])
+      );
+      setStatus("no-endpoint");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "sent") {
     return (
       <div className="border-l-[3px] border-blue bg-cream-light px-6 py-8">
         <div className="font-serif text-2xl text-navy-dark mb-2">Thank you.</div>
@@ -37,6 +62,33 @@ export default function ContactForm() {
           </a>
           .
         </p>
+      </div>
+    );
+  }
+
+  if (status === "no-endpoint") {
+    return (
+      <div className="border-l-[3px] border-blue bg-cream-light px-6 py-8">
+        <div className="font-serif text-2xl text-navy-dark mb-2">
+          Send us an email.
+        </div>
+        <p className="text-sm text-navy-dark/60 leading-[1.7] font-light mb-4">
+          This form isn&apos;t connected to an inbox yet. Click below to open
+          your email app with your message ready to send, or write to{" "}
+          <a
+            href={`mailto:${SITE.infoEmail}`}
+            className="text-blue hover:text-blue-dark break-all"
+          >
+            {SITE.infoEmail}
+          </a>
+          .
+        </p>
+        <a
+          href={fallback}
+          className="inline-block bg-blue hover:bg-blue-dark text-white px-6 py-3 text-[13px] font-semibold tracking-[0.05em] transition-colors"
+        >
+          Open Email
+        </a>
       </div>
     );
   }
@@ -82,11 +134,24 @@ export default function ContactForm() {
           className={`${inputClass} resize-y`}
         />
       </div>
+      {status === "error" && (
+        <p className="text-sm text-red-700 leading-[1.7]">
+          Something went wrong sending your message. Please try again, or email{" "}
+          <a
+            href={`mailto:${SITE.infoEmail}`}
+            className="text-blue hover:text-blue-dark break-all"
+          >
+            {SITE.infoEmail}
+          </a>
+          .
+        </p>
+      )}
       <button
         type="submit"
-        className="w-full bg-blue hover:bg-blue-dark text-white py-3.5 text-[13px] font-semibold tracking-[0.05em] transition-colors cursor-pointer"
+        disabled={status === "sending"}
+        className="w-full bg-blue hover:bg-blue-dark text-white py-3.5 text-[13px] font-semibold tracking-[0.05em] transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-wait"
       >
-        Send Message
+        {status === "sending" ? "Sending…" : "Send Message"}
       </button>
     </form>
   );

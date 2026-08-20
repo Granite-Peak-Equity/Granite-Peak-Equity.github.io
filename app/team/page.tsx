@@ -72,15 +72,21 @@ function TeamCard({ member, featured }: { member: TeamMember; featured: boolean 
 
       {/* Bio */}
       <div className={`bg-white ${featured ? "px-7 pt-7 pb-8" : "px-6 pt-[22px] pb-7"}`}>
-        {member.bio.map((para, i) => (
-          <p
-            key={i}
-            className="text-sm text-navy-dark/60 leading-[1.78] font-light"
-            style={{ marginBottom: i < member.bio.length - 1 ? 12 : 0 }}
-          >
-            {para}
+        {member.bio.length > 0 ? (
+          member.bio.map((para, i) => (
+            <p
+              key={i}
+              className="text-sm text-navy-dark/60 leading-[1.78] font-light"
+              style={{ marginBottom: i < member.bio.length - 1 ? 12 : 0 }}
+            >
+              {para}
+            </p>
+          ))
+        ) : (
+          <p className="text-sm text-navy-dark/35 leading-[1.78] font-light italic">
+            Bio coming soon.
           </p>
-        ))}
+        )}
       </div>
     </div>
   );

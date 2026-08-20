@@ -5,6 +5,7 @@ import Cta from "@/components/Cta";
 import FeatureRows from "@/components/FeatureRows";
 import TypedHeadline from "@/components/TypedHeadline";
 import { asset } from "@/lib/site";
+import { PORTFOLIO } from "@/lib/data";
 
 const METRICS: [string, string][] = [
   ["20+", "Years in Business"],
@@ -12,17 +13,48 @@ const METRICS: [string, string][] = [
   ["$40M", "In Distributions"],
 ];
 
-const FEATURED = [
-  { name: "CityView Central Lofts", loc: "Sioux City, IA", units: "75 Units", type: "Historic Conversion", bg: "#1e2c3f" },
-  { name: "Hons Apartments", loc: "Sioux City, IA", units: "72 Units", type: "Class A Mid-Rise", bg: "#1a2535" },
-  { name: "Juniper Canyon", loc: "Tucson, AZ", units: "141 Units", type: "Garden Style", bg: "#243040" },
+/** Properties highlighted on the home page, pulled from the portfolio so the
+ *  copy and gallery photos stay in sync with /portfolio. */
+const FEATURED_NAMES = [
+  "CityView Central Lofts",
+  "Hons Apartments",
+  "Juniper Canyon",
 ];
 
-const ABOUT_FEATURES = [
-  { t: "Value-Add Focus", d: "We grow NOI by 50%+ in year one through targeted capital improvements and hands-on operational management." },
-  { t: "Government-Assisted Expertise", d: "Deep experience with HUD HAP contracts, Section 42 LIHTC, and post-Section 236 conversions across multiple states." },
-  { t: "Regional Market Knowledge", d: "Secondary and tertiary markets across MT, SD, IA, TX, and AZ — markets we know personally, not just on paper." },
-  { t: "Investor-First Returns", d: "20%–65% average annual ROIs and 18%–45% IRRs across our portfolio. Our investors come back deal after deal." },
+const FEATURED = FEATURED_NAMES.flatMap((name) => {
+  const p = PORTFOLIO.find((prop) => prop.name === name);
+  return p ? [p] : [];
+});
+
+const BENEFITS = [
+  {
+    t: "Expertise",
+    d: "You profit from our expertise in asset management, institutional property management, & fundamental market analysis, as well as the leverage of our many proprietary tools that help to ensure superior performance on the metrics that matter (Cash on Cash Return, Annualized Yield, & Community Enrichment).",
+  },
+  {
+    t: "Stability",
+    d: "Consistently stable, this sector has grown & outperformed all others even through our current economic contraction.",
+  },
+  {
+    t: "Cash Flow",
+    d: "Your quarterly reward for participation in this exciting investment vehicle.",
+  },
+  {
+    t: "Favorable Tax Treatment",
+    d: "Through the ability to depreciate various portions of the asset on aggressive schedules, significant paper losses can be taken against real income. Additionally, tax handling of all appreciation is as long term capital gains, unless indefinitely deferred through 1031 exchange. Granite Peak Equity employs institutional cost segregation techniques to maximize investor benefit in these areas.",
+  },
+  {
+    t: "Appreciation",
+    d: "Both in the form of forced appreciation through a well executed repositioning strategy as well as in the form of organic appreciation through the interplay of market forces over the participation window. Granite Peak Equity's expertise in aggressive repositioning of underperforming assets ensures that your investment outperforms in this critical area.",
+  },
+  {
+    t: "Leverage",
+    d: "Magnifies the appreciation of investments in this sector, 4 to 1 on average. Expert in the underwriting of large properties, Granite Peak Equity employs a proprietary system for the maximization of investor benefit in this area.",
+  },
+  {
+    t: "Participation In Emerging Markets",
+    d: "Targeting the correct markets amplifies the investment yield achievable in this already superior investment vehicle.",
+  },
 ];
 
 export default function HomePage() {
@@ -71,32 +103,36 @@ export default function HomePage() {
 
       {/* ── About ── */}
       <section className="px-6 md:px-[60px] py-16 md:py-[88px] bg-cream-light">
-        <div className="grid gap-12 md:gap-[88px] md:grid-cols-2 items-start">
-          <div>
-            <Eyebrow className="mb-6">Who We Are</Eyebrow>
-            <h2 className="font-serif text-navy-dark leading-[1.15] text-[34px] md:text-[50px] mb-6">
-              Turning Overlooked Properties
-              <br className="hidden md:block" /> Into Top Performers
-            </h2>
-            <p className="text-base leading-[1.82] text-navy-dark/60 font-light mb-[18px]">
-              Founded by Chad Laird in Bozeman, Montana, Granite Peak Equity has
-              spent over two decades acquiring and improving apartment
-              communities across the Mountain West and Great Plains. We treat
-              every property like it&apos;s our own — because it is.
-            </p>
-            <p className="text-[15px] leading-[1.8] text-navy-dark/50 font-light mb-8">
-              Our track record includes growing NOI by 50% or more in the first
-              year on stabilized assets — including complex HUD HAP and Section
-              42 LIHTC conversions.
-            </p>
-            <Link
-              href="/investors"
-              className="inline-block bg-blue hover:bg-blue-dark text-white px-8 py-[14px] text-[13px] font-semibold tracking-[0.05em] transition-colors"
-            >
-              Learn How to Invest
-            </Link>
+        <div className="max-w-[820px]">
+          <Eyebrow className="mb-6">Who We Are</Eyebrow>
+          <h2 className="font-serif text-navy-dark leading-[1.15] text-[34px] md:text-[50px] mb-6">
+            Turning Overlooked Properties
+            <br className="hidden md:block" /> Into Top Performers
+          </h2>
+          <p className="text-base leading-[1.82] text-navy-dark/60 font-light mb-8">
+            Granite Peak Equity has spent over two decades specializing in
+            multifamily real estate investment in emerging markets throughout
+            the western United States. Current projects are bringing our
+            investors an exceptional return on investment, through the
+            harnessing of both cash flow in the short term &amp; capital
+            appreciation in the longer term.
+          </p>
+          <Link
+            href="/investors"
+            className="inline-block bg-blue hover:bg-blue-dark text-white px-8 py-[14px] text-[13px] font-semibold tracking-[0.05em] transition-colors"
+          >
+            Learn How You Can Invest
+          </Link>
+        </div>
+
+        {/* Why multifamily — split across two columns so the list doesn't
+            run as one very long stack. */}
+        <div className="mt-14 md:mt-[72px]">
+          <Eyebrow className="mb-6">Why Invest With Granite Peak Equity</Eyebrow>
+          <div className="grid md:grid-cols-2 md:gap-x-[72px]">
+            <FeatureRows items={BENEFITS.slice(0, 4)} />
+            <FeatureRows items={BENEFITS.slice(4)} />
           </div>
-          <FeatureRows items={ABOUT_FEATURES} />
         </div>
       </section>
 
@@ -120,17 +156,26 @@ export default function HomePage() {
           {FEATURED.map((p) => (
             <div key={p.name} className="overflow-hidden border border-navy-dark/[0.08]">
               <div
-                className="h-[180px] flex items-center justify-center"
+                className="aspect-[3/2] flex items-center justify-center relative overflow-hidden"
                 style={{ background: p.bg }}
               >
-                <div className="text-center">
-                  <div className="w-10 h-10 border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
-                    <span className="text-white/25 text-[18px] font-serif">⌂</span>
+                {p.images && p.images.length > 0 ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={asset(p.images[0])}
+                    alt={p.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="text-center">
+                    <div className="w-10 h-10 border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
+                      <span className="text-white/25 text-[18px] font-serif">⌂</span>
+                    </div>
+                    <div className="text-white/20 text-[11px] tracking-[0.08em] uppercase">
+                      Photo Coming Soon
+                    </div>
                   </div>
-                  <div className="text-white/20 text-[11px] tracking-[0.08em] uppercase">
-                    Photo Coming Soon
-                  </div>
-                </div>
+                )}
               </div>
               <div className="px-[22px] py-5">
                 <div className="text-blue text-[10px] tracking-[0.1em] uppercase mb-1.5">
@@ -140,34 +185,12 @@ export default function HomePage() {
                   {p.name}
                 </div>
                 <div className="text-navy-dark/45 text-[13px]">
-                  {p.loc} · {p.units}
+                  {p.loc}
+                  {p.units ? ` · ${p.units} Units` : ""}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── Testimonial ── */}
-      <section className="bg-navy-mid px-6 md:px-[60px] py-16 md:py-[72px] flex gap-6 md:gap-10 items-start">
-        <div className="font-serif text-blue text-[80px] leading-[0.8] shrink-0 -mt-2 opacity-60">
-          &ldquo;
-        </div>
-        <div>
-          <p className="font-serif text-white leading-[1.55] text-[22px] md:text-[28px] mb-6 max-w-[780px]">
-            Chad has been very straightforward and up front about his investment
-            objectives, how my money would be used, and how my returns would be
-            earned. He has met or exceeded my expectations every year.
-          </p>
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-navy-light flex items-center justify-center text-blue-light text-sm font-semibold border border-blue-light/25">
-              T
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-blue-light">Tom S.</div>
-              <div className="text-[13px] text-white/35">Investor since 2009</div>
-            </div>
-          </div>
         </div>
       </section>
 

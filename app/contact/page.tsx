@@ -3,7 +3,7 @@ import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
 import ContactForm from "@/components/ContactForm";
-import { SITE } from "@/lib/site";
+import { SITE, OFFICES, telHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const CHANNELS = [
   {
-    label: "General Inquiries",
+    label: "Investor Relations",
     value: SITE.infoEmail,
     href: `mailto:${SITE.infoEmail}`,
     note: "Questions about the firm or investing with us.",
@@ -24,7 +24,43 @@ const CHANNELS = [
     href: `mailto:${SITE.acquisitionsEmail}`,
     note: "Submit a property or deal for review by Brad Osen.",
   },
+  {
+    label: "Careers",
+    value: SITE.careersEmail,
+    href: `mailto:${SITE.careersEmail}`,
+    note: "Interested in joining the team? Send us a note.",
+  },
 ];
+
+const ADDRESSED_OFFICES = OFFICES.filter((o) => o.address.length > 0);
+const PHONE_ONLY_OFFICES = OFFICES.filter((o) => o.address.length === 0);
+
+function OfficeBlock({ office }: { office: (typeof OFFICES)[number] }) {
+  return (
+    <div>
+      <div className="text-[11px] tracking-[0.1em] uppercase text-navy-dark/40 mb-2">
+        {office.city}
+      </div>
+      <div className="text-[15px] text-navy-dark/70 leading-[1.7] font-light">
+        {office.address.map((line) => (
+          <span key={line}>
+            {line}
+            <br />
+          </span>
+        ))}
+        <span className={office.address.length ? "inline-block mt-2" : undefined}>
+          Direct:{" "}
+          <a
+            href={telHref(office.direct)}
+            className="text-navy-dark hover:text-blue transition-colors"
+          >
+            {office.direct}
+          </a>
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function ContactPage() {
   return (
@@ -66,30 +102,49 @@ export default function ContactPage() {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div>
-                <div className="text-[11px] tracking-[0.1em] uppercase text-navy-dark/40 mb-2">
-                  Office
+            {/* Phone-only offices stack under Central so they don't sit in a
+                gap beside the taller offices that carry a street address. */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10 items-start">
+              <div className="flex flex-col gap-7">
+                <div>
+                  <div className="text-[11px] tracking-[0.1em] uppercase text-navy-dark/40 mb-2">
+                    Central
+                  </div>
+                  <div className="text-[15px] text-navy-dark/70 leading-[1.7] font-light">
+                    Toll Free:{" "}
+                    <a
+                      href={telHref(SITE.tollFree)}
+                      className="text-navy-dark hover:text-blue transition-colors"
+                    >
+                      {SITE.tollFree}
+                    </a>
+                    <br />
+                    Fax: {SITE.fax}
+                  </div>
                 </div>
-                <div className="text-[15px] text-navy-dark/70 leading-[1.7] font-light">
-                  {SITE.legalName}
-                  <br />
-                  {SITE.location}
-                </div>
+
+                {PHONE_ONLY_OFFICES.map((o) => (
+                  <OfficeBlock key={o.city} office={o} />
+                ))}
               </div>
-              <div>
-                <div className="text-[11px] tracking-[0.1em] uppercase text-navy-dark/40 mb-2">
-                  Investors
-                </div>
-                <a
-                  href={SITE.investorLoginUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[15px] text-blue hover:text-blue-dark font-light transition-colors"
-                >
-                  Investor Login Portal →
-                </a>
+
+              {ADDRESSED_OFFICES.map((o) => (
+                <OfficeBlock key={o.city} office={o} />
+              ))}
+            </div>
+
+            <div>
+              <div className="text-[11px] tracking-[0.1em] uppercase text-navy-dark/40 mb-2">
+                Investors
               </div>
+              <a
+                href={SITE.investorLoginUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[15px] text-blue hover:text-blue-dark font-light transition-colors"
+              >
+                Investor Login Portal →
+              </a>
             </div>
           </div>
 

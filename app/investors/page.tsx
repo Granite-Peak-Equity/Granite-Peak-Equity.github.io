@@ -3,12 +3,11 @@ import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
 import Cta from "@/components/Cta";
-import FeatureRows from "@/components/FeatureRows";
 
 export const metadata: Metadata = {
   title: "Investor Info",
   description:
-    "How to invest with Granite Peak Equity: a simple, transparent process, our track record, and answers to common questions for accredited investors.",
+    "How to invest with Granite Peak Equity: a simple, transparent process and answers to common questions for accredited investors.",
 };
 
 const STEPS = [
@@ -17,27 +16,25 @@ const STEPS = [
   { n: "03", t: "Make Your Investment", d: "If it's a fit, we handle all the paperwork. You'll receive regular updates and distributions as the asset performs." },
 ];
 
-const TRACK = [
-  { n: "20%–65%", l: "Average Annual ROI" },
-  { n: "18%–45%", l: "Average IRR" },
-  { n: "50%+", l: "Avg. First-Year NOI Growth" },
-  { n: "$40M", l: "In Investor Distributions" },
-];
-
-const EXPECT = [
-  { t: "Quarterly Reporting", d: "Asset-level performance updates every quarter — occupancy, revenue, expenses, and what's next." },
-  { t: "Direct Access", d: "Reach Chad or Brad directly. We're a small, focused team and we like it that way." },
-  { t: "Distributions on Schedule", d: "Deal documents specify the distribution schedule and we honor it, or communicate proactively if anything changes." },
-  { t: "Full Transparency on Exit", d: "Detailed final accounting on disposition — every dollar in, every dollar out." },
+/** Rule 501 of Regulation D, as summarized for investors. */
+const ACCREDITED = [
+  "A bank, insurance company, registered investment company, business development company, or small business investment company;",
+  "An employee benefit plan, within the meaning of the Employee Retirement Income Security Act, if a bank, insurance company, or registered investment adviser makes the investment decisions, or if the plan has total assets in excess of $5 million;",
+  "A charitable organization, corporation, or partnership with assets exceeding $5 million;",
+  "A director, executive officer, or general partner of the company selling the securities;",
+  "A business in which all the equity owners are accredited investors;",
+  "A natural person who has individual net worth, or joint net worth with the person's spouse, that exceeds $1 million at the time of the purchase, excluding the value of the primary residence of such person;",
+  "A natural person with income exceeding $200,000 in each of the two most recent years or joint income with a spouse exceeding $300,000 for those years and a reasonable expectation of the same income level in the current year; or",
+  "A trust with assets in excess of $5 million, not formed to acquire the securities offered, whose purchases a sophisticated person makes.",
 ];
 
 const FAQS = [
-  { q: "Who can invest with Granite Peak?", a: "We work with accredited investors — individuals with a net worth over $1M (excluding primary residence) or annual income over $200K ($300K jointly) for the past two years." },
-  { q: "What is the minimum investment?", a: "Minimums vary by deal, typically ranging from $50,000 to $100,000. We're happy to discuss the specifics of any current opportunity." },
+  { q: "Who can invest with Granite Peak?", a: "We work with accredited investors, as the term is defined in Rule 501 of Regulation D — see the full definition above." },
+  { q: "What is the minimum investment?", a: "The minimum investment is $20,000, with no maximum. We're happy to discuss the specifics of any current opportunity." },
   { q: "How are distributions handled?", a: "Distributions are paid out based on the deal structure — typically quarterly or upon exit. Each offering document outlines the specific schedule." },
-  { q: "How often will I hear from you?", a: "We provide quarterly reporting on asset performance and are always reachable directly. Chad and Brad are hands-on and accessible." },
+  { q: "How often will I hear from you?", a: "We provide quarterly reporting on asset performance and are always reachable directly." },
   { q: "What types of properties do you invest in?", a: "We focus exclusively on multifamily residential — apartment communities in secondary and tertiary markets across the Mountain West and Great Plains." },
-  { q: "Do you manage the properties yourself?", a: "Yes. Our in-house property management team, led by Alex Evans, manages all assets directly. We don't outsource to third-party managers." },
+  { q: "Do you manage the properties yourself?", a: "Yes. Our in-house property management team, manages all assets directly. We don't outsource to third-party managers." },
 ];
 
 export default function InvestorsPage() {
@@ -77,56 +74,6 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Track Record */}
-      <section className="bg-navy-dark px-6 md:px-[60px] py-16 md:py-20">
-        <Eyebrow className="mb-5">Track Record</Eyebrow>
-        <h2 className="font-serif font-light text-white text-[34px] md:text-[48px] leading-[1.1] mb-12 md:mb-[52px]">
-          Results our investors count on.
-        </h2>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-          {TRACK.map((t, i) => (
-            <div
-              key={t.l}
-              className={`lg:pr-10 ${
-                i < 3 ? "lg:border-r border-white/[0.08] lg:mr-10" : ""
-              }`}
-            >
-              <div className="font-serif font-light text-blue text-[44px] md:text-[52px] leading-none mb-2.5">
-                {t.n}
-              </div>
-              <div className="text-white/40 text-xs tracking-[0.1em] uppercase">
-                {t.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* What to Expect */}
-      <section className="px-6 md:px-[60px] py-16 md:py-[88px] bg-cream-light">
-        <div className="grid gap-12 md:gap-20 md:grid-cols-2">
-          <div>
-            <Eyebrow className="mb-5">What to Expect</Eyebrow>
-            <h2 className="font-serif text-navy-dark text-[30px] md:text-[46px] leading-[1.18] mb-6">
-              Clear communication.
-              <br className="hidden md:block" /> No surprises.
-            </h2>
-            <p className="text-base leading-[1.8] text-navy-dark/60 font-light mb-4">
-              We believe you should always know how your money is performing.
-              Chad and Brad are directly reachable — not hidden behind investor
-              portals and auto-replies.
-            </p>
-            <p className="text-[15px] leading-[1.8] text-navy-dark/50 font-light">
-              Every deal comes with quarterly reporting, a clear distribution
-              schedule, and honest communication when things don&apos;t go
-              exactly to plan — which is rare, but which we always address
-              proactively.
-            </p>
-          </div>
-          <FeatureRows items={EXPECT} />
-        </div>
-      </section>
-
       {/* Testimonial (centered) */}
       <section className="bg-navy-mid px-6 md:px-[60px] py-16 md:py-[72px]">
         <div className="max-w-[800px] mx-auto text-center">
@@ -142,6 +89,40 @@ export default function InvestorsPage() {
             Tom S. · Investor since 2009
           </div>
         </div>
+      </section>
+
+      {/* Accredited investor definition */}
+      <section className="px-6 md:px-[60px] py-16 md:py-[88px] bg-cream-light">
+        <Eyebrow className="mb-5">Who Can Invest</Eyebrow>
+        <h2 className="font-serif text-navy-dark text-[34px] md:text-[46px] leading-[1.1] mb-6">
+          Defining an accredited investor.
+        </h2>
+        <p className="max-w-[760px] text-base leading-[1.8] text-navy-dark/60 font-light">
+          Federal securities law defines the term{" "}
+          <span className="italic">accredited investor</span> in Rule 501 of
+          Regulation D as:
+        </p>
+
+        <ol className="mt-10 md:mt-12 grid md:grid-cols-2 md:gap-x-16">
+          {ACCREDITED.map((item, i) => (
+            <li
+              key={i}
+              className="flex gap-5 py-6 border-b border-navy-dark/[0.09]"
+            >
+              <span className="font-serif font-light text-blue/40 text-[22px] leading-[1.3] shrink-0 w-7">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className="text-[15px] text-navy-dark/60 leading-[1.78] font-light">
+                {item}
+              </span>
+            </li>
+          ))}
+        </ol>
+
+        <p className="mt-8 text-[13px] leading-[1.7] text-navy-dark/40 font-light max-w-[760px]">
+          Summarized for convenience — Rule 501 governs. This is general
+          information, not legal or investment advice.
+        </p>
       </section>
 
       {/* FAQ */}

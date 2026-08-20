@@ -213,6 +213,7 @@ export type TeamMember = {
   initials: string;
   /** Path under /public/uploads, or null if a headshot isn't available yet. */
   photo: string | null;
+  /** Empty when a bio hasn't been written yet — the card renders photo + title only. */
   bio: string[];
   size: "large" | "small";
 };
@@ -235,7 +236,7 @@ export const TEAM: TeamMember[] = [
     name: "Brad Osen",
     title: "Acquisitions & Financial Oversight",
     initials: "BO",
-    photo: null,
+    photo: "/uploads/brad-osen.jpg",
     bio: [
       "With a passion for scouring the real estate landscape for exceptional investment opportunities, Brad is able to leverage his institutional experience with a focus on investor returns that has resulted in many highly successful investments over the years.",
       "Leading the acquisitions effort at Granite Peak Equity, Brad utilizes his investment evaluation skills to find creative solutions to source and acquire multi-family properties that deliver excellent returns for the company's stakeholders. He has been instrumental in acquiring assets in several strategic markets that have successfully generated 20% to 65% average annual ROIs and 18% to 45% IRRs to investors. Brad is also able to put his genuine enjoyment of his peers to good use in partnering with well-established real estate professionals.",
@@ -246,26 +247,38 @@ export const TEAM: TeamMember[] = [
     size: "large",
   },
   {
-    name: "Alex Evans",
-    title: "Property Management",
-    initials: "AE",
+    name: "Ileana Scott",
+    title: "Regional Property Manager",
+    initials: "IS",
     photo: null,
-    bio: [
-      "Alex previously worked as the Loan Funds Manager for Prospera Business Network here in Bozeman and as a Compliance Officer at Gonzaga University in Spokane. He has an MBA with a finance concentration from Gonzaga University.",
-      "In heading up property management operations at Granite Peak Multifamily, Alex is focused on refining the systems and processes core to the business while spearheading our growth in managing multifamily properties for other ownership groups throughout the region.",
-      "Alex enjoys studying all things related to real estate, finance, economics, and entrepreneurship. When not at the office he can often be found hiking in the mountains or exploring new places with his wife in their RV.",
-    ],
+    bio: [],
     size: "small",
   },
   {
     name: "Sally Laird",
-    title: "Executive Assistant",
+    title: "Leasing Center of Excellence Manager",
     initials: "SL",
-    photo: null,
+    photo: "/uploads/sally-laird.png",
     bio: [
       "Sally joined us after a 20 year career with NorthWestern Energy where she worked in Customer Care and the New Construction Department. She is a graduate of The University of Montana Western in Dillon Montana with a BS in Elementary Education. Sally's previous work and life experience have given her the adaptability to jump into any task that crops up. She enjoys the variety of work involved in the Multifamily investment business, working with employees, tenants and investors.",
       "When away from the office, her passions are real estate, antiquing, music of all kinds, her animals, reading, camping and travel.",
     ],
+    size: "small",
+  },
+  {
+    name: "Jackie Campbell",
+    title: "Administration",
+    initials: "JC",
+    photo: null,
+    bio: [],
+    size: "small",
+  },
+  {
+    name: "Connor Erlandson",
+    title: "Property Management",
+    initials: "CE",
+    photo: null,
+    bio: [],
     size: "small",
   },
 ];
