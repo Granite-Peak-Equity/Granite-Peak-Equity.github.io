@@ -6,7 +6,7 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 import { PORTFOLIO } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Holdings",
   description:
     "Ten multifamily communities across six states — each acquired, improved, and managed by Granite Peak Equity with hands-on attention.",
 };
@@ -21,11 +21,7 @@ const STATS: [string, string][] = [
 export default function PortfolioPage() {
   return (
     <SiteFrame>
-      <PageHero
-        tag="Our Properties"
-        title="A Decade-Spanning Portfolio."
-        subtitle="Ten communities across six states — each acquired, improved, and managed with hands-on attention."
-      />
+      <PageHero title="Holdings" />
 
       {/* Stats strip */}
       <section className="bg-navy-mid px-6 md:px-[60px] py-8 flex flex-wrap gap-x-12 gap-y-4 md:gap-[60px] items-center">
