@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SITE.name} — Multifamily Real Estate Investment`,
     description:
-      "Family-owned multifamily real estate investment and management. 20+ years, 18 deals closed, $40M in investor distributions.",
+      "Family-owned multifamily real estate investment and management. Apartment communities across Montana, Iowa, South Dakota, Texas, and Arizona since 2006.",
     type: "website",
   },
 };

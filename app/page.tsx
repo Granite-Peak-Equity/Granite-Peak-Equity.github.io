@@ -4,13 +4,13 @@ import Eyebrow from "@/components/Eyebrow";
 import Cta from "@/components/Cta";
 import FeatureRows from "@/components/FeatureRows";
 import TypedHeadline from "@/components/TypedHeadline";
-import { asset } from "@/lib/site";
-import { PORTFOLIO } from "@/lib/data";
+import { asset, SITE } from "@/lib/site";
+import { PORTFOLIO, PROPERTY_COUNT, STATE_COUNT } from "@/lib/data";
 
 const METRICS: [string, string][] = [
-  ["20+", "Years in Business"],
-  ["18", "Deals Closed"],
-  ["$40M", "In Distributions"],
+  [String(SITE.foundedYear), "Investing Since"],
+  [String(PROPERTY_COUNT), "Communities Owned"],
+  [String(STATE_COUNT), "States"],
 ];
 
 /** Properties highlighted on the home page, pulled from the portfolio so the

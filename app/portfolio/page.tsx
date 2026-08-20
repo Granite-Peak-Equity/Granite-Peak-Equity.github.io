@@ -3,7 +3,8 @@ import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Cta from "@/components/Cta";
 import PortfolioGrid from "@/components/PortfolioGrid";
-import { PORTFOLIO } from "@/lib/data";
+import { PORTFOLIO, PROPERTY_COUNT, STATE_COUNT } from "@/lib/data";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Holdings",
@@ -12,10 +13,9 @@ export const metadata: Metadata = {
 };
 
 const STATS: [string, string][] = [
-  ["10", "Properties"],
-  ["5", "States"],
-  ["650+", "Units"],
-  ["18", "Total Deals Closed"],
+  [String(PROPERTY_COUNT), "Communities"],
+  [String(STATE_COUNT), "States"],
+  [String(SITE.foundedYear), "Investing Since"],
 ];
 
 export default function PortfolioPage() {

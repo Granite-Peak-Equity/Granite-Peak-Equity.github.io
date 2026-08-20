@@ -207,6 +207,12 @@ export const PORTFOLIO: Property[] = [
   },
 ];
 
+/** Derived from PORTFOLIO so the headline stats can't drift from reality. */
+export const PROPERTY_COUNT = PORTFOLIO.length;
+export const STATE_COUNT = new Set(
+  PORTFOLIO.map((p) => p.loc.split(", ")[1])
+).size;
+
 export type TeamMember = {
   name: string;
   title: string;

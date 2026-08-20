@@ -12,6 +12,7 @@ export const SITE = {
   name: "Granite Peak Equity",
   legalName: "Granite Peak Equity, LLC",
   location: "Bozeman, Montana",
+  foundedYear: 2006,
   infoEmail: "InvestorRelations@GranitePeakEquity.com",
   acquisitionsEmail: "Acquisitions@GranitePeakEquity.com",
   careersEmail: "Careers@GranitePeakEquity.com",
