@@ -12,14 +12,14 @@ export const metadata: Metadata = {
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <figure className="break-inside-avoid mb-5 bg-white border border-navy-dark/[0.09] px-7 pt-6 pb-7 shadow-[0_6px_24px_rgba(15,24,36,.05)]">
+    <figure className="h-full flex flex-col bg-white border border-navy-dark/[0.09] px-7 pt-6 pb-7 shadow-[0_6px_24px_rgba(15,24,36,.05)]">
       <div
         aria-hidden
         className="text-blue text-[15px] leading-none tracking-[0.18em] mb-[18px] select-none"
       >
         ★★★★★
       </div>
-      <blockquote>
+      <blockquote className="mb-6">
         {t.quote.map((para, i) => (
           <p
             key={i}
@@ -32,7 +32,7 @@ function Card({ t }: { t: Testimonial }) {
           </p>
         ))}
       </blockquote>
-      <figcaption className="mt-6 pt-4 border-t border-navy-dark/[0.09] text-[11px] tracking-[0.1em] uppercase">
+      <figcaption className="mt-auto pt-4 border-t border-navy-dark/[0.09] text-[11px] tracking-[0.1em] uppercase">
         <span className="text-blue font-semibold">{t.who}</span>
         <span className="text-navy-dark/35"> · {t.where}</span>
       </figcaption>
@@ -49,10 +49,10 @@ export default function TestimonialsPage() {
         subtitle="Many of our investors have been with us for a decade or more. Here is what a few of them have to say."
       />
 
-      {/* Card grid — CSS columns so the cards keep their natural height
-          instead of stretching to match the tallest in the row. */}
+      {/* Row-based grid so the cards read left-to-right and a short final
+          row starts at the left edge. Cards in a row share a height. */}
       <section className="px-6 md:px-[60px] py-16 md:py-20 bg-cream-light">
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-5">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <Card key={t.who + t.where} t={t} />
           ))}
