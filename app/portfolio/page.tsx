@@ -22,6 +22,7 @@ export default function PortfolioPage() {
   return (
     <SiteFrame>
       <PageHero
+        tag="Our Properties"
         title="Holdings"
         subtitle="Ten apartment communities in five states."
       />
