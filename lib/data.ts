@@ -159,7 +159,7 @@ export const PORTFOLIO: Property[] = [
     desc: "Sundial Square Apartments is a 63-unit, low-rise multifamily property located in Rapid City, South Dakota. The property is situated on Waterloo Street, directly across the street from the 28-acre Roosevelt Park with public amenities such as multi-purpose sports courts, basketball courts, baseball fields, playground, indoor swimming pool, indoor ice arena, walking trails, picnic areas, pond, restrooms, and ample open space, as well as a local bus stop. It is centrally located and offers convenient access to nearby employment and retail centers via easily accessible primary roads. Built in 1992, the property is comprised of three three-story, garden-style residential buildings, with one one-bedroom unit being used as an on-site management office. Finishes & features include brick veneer and vinyl siding, pitched roofs with composition shingles, an automated irrigation system, and a sprinkler fire suppression system. Improvements include 31 centrally located garages and 3 clothing care centers. Also included is a 1.95-acre parcel of land adjacent to the property, allowing for future expansion of Sundial Square with 40+ additional units. The property offers residents a choice of five attractive floor plans.",
     bg: "#1e2840",
     images: [
-      "/uploads/sundial/Sundial-Exterior-1-1024x768.jpg",
+      "/uploads/sundial/SS-Approach.jpg",
       "/uploads/sundial/Sundial-Exterior-2-scaled.jpg",
       "/uploads/sundial/Sundial-Square-Swim-Center.jpg",
       "/uploads/sundial/Sundial-Square-Park.jpg",
@@ -283,8 +283,11 @@ export const TEAM: TeamMember[] = [
     name: "Connor Erlandson",
     title: "Property Management",
     initials: "CE",
-    photo: null,
-    bio: [],
+    photo: "/uploads/connor-erlandson.jpg",
+    bio: [
+      "Connor Erlandson is a licensed Montana property manager with Granite Peak Multifamily, the operational side of Granite Peak Equity. He earned his bachelor's degree in business management from Montana State University, with electives in real estate investment analysis and entrepreneurship. He came to property management from real estate wholesaling, where he handled sales, transaction coordination, and market analysis with a niche focus on vacant land. He is also pursuing a Montana real estate salesperson license.",
+      "Outside of work, Connor is an avid traveler, car and tech enthusiast, hiker, pc gamer, and foodie — and a veteran road cyclist turned mountain biker.",
+    ],
     size: "small",
   },
 ];
