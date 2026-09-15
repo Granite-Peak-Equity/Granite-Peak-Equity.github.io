@@ -226,7 +226,7 @@ export type TeamMember = {
 
 export const TEAM: TeamMember[] = [
   {
-    name: "Chad A. Laird",
+    name: "Chad Laird",
     title: "Founder & Managing Director",
     initials: "CL",
     photo: "/uploads/chad-laird.jpg",
