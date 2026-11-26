@@ -49,5 +49,6 @@ export const NAV_ITEMS = [
   { label: "Team", href: "/team" },
   { label: "Acquisition Criteria", href: "/acquisition" },
   { label: "Testimonials", href: "/testimonials" },
+  { label: "Careers", href: "/apply" },
   { label: "Contact", href: "/contact" },
 ] as const;

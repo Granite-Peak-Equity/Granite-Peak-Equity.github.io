@@ -4,6 +4,7 @@ import Eyebrow from "@/components/Eyebrow";
 import Cta from "@/components/Cta";
 import FeatureRows from "@/components/FeatureRows";
 import TypedHeadline from "@/components/TypedHeadline";
+import PortfolioGrid from "@/components/PortfolioGrid";
 import { asset, SITE } from "@/lib/site";
 import { PORTFOLIO, PROPERTY_COUNT, STATE_COUNT } from "@/lib/data";
 
@@ -152,46 +153,7 @@ export default function HomePage() {
             View All Properties →
           </Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURED.map((p) => (
-            <div key={p.name} className="overflow-hidden border border-navy-dark/[0.08]">
-              <div
-                className="aspect-[3/2] flex items-center justify-center relative overflow-hidden"
-                style={{ background: p.bg }}
-              >
-                {p.images && p.images.length > 0 ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={asset(p.images[0])}
-                    alt={p.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-center">
-                    <div className="w-10 h-10 border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
-                      <span className="text-white/25 text-[18px] font-serif">⌂</span>
-                    </div>
-                    <div className="text-white/20 text-[11px] tracking-[0.08em] uppercase">
-                      Photo Coming Soon
-                    </div>
-                  </div>
-                )}
-              </div>
-              <div className="px-[22px] py-5">
-                <div className="text-blue text-[10px] tracking-[0.1em] uppercase mb-1.5">
-                  {p.type}
-                </div>
-                <div className="font-serif text-[22px] font-medium text-navy-dark mb-1">
-                  {p.name}
-                </div>
-                <div className="text-navy-dark/45 text-[13px]">
-                  {p.loc}
-                  {p.units ? ` · ${p.units} Units` : ""}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <PortfolioGrid properties={FEATURED} />
       </section>
 
       <Cta

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteFrame from "@/components/SiteFrame";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
@@ -95,6 +96,7 @@ export default function ContactPage() {
               <div className="text-sm text-navy-dark/55 leading-[1.6] font-light mt-1.5">
                 {c.note}
               </div>
+              {c.label === "Careers" && <Link href="/apply" className="inline-block mt-3 text-sm font-semibold text-blue hover:text-blue-dark">Apply for a position →</Link>}
             </div>
           ))}
         </div>
